@@ -155,7 +155,7 @@ end
 * `graphics_port` - Sets the port for the display protocol to bind to.  Defaults to 5900.
 * `graphics_ip` - Sets the IP for the display protocol to bind to.  Defaults to "127.0.0.0.1".
 * `graphics_passwd` - Sets the password for the display protocol. Working for vnc and spice. by default working without passsword.
-* `video_type` - Sets the graphics card type exposed to the guest.  Defaults to "cirrus".  Possible values are "cirrus", "std", "vmware", "qxl", "tcx", "cg3", or "none".
+* `video_type` - Sets the graphics card type exposed to the guest.  Defaults to "cirrus".  [Possible values](http://libvirt.org/formatdomain.html#elementsVideo) are "vga", "cirrus", "vmvga", "xen", "vbox", or "qxl".
 * `video_vram` - Used by some graphics card types to vary the amount of RAM dedicated to video.  Defaults to 9216.
 
 
@@ -281,6 +281,8 @@ You can create and attach additional disks to a VM via `libvirt.storage :file`. 
 * `device` - Name of the device node the disk image will have in the VM, e.g. *vdb*. If unspecified, the next available device is chosen.
 * `size` - Size of the disk image. If unspecified, defaults to 10G.
 * `type` - Type of disk image to create. Defaults to *qcow2*.
+* `bus` - Type of bus to connect device to. Defaults to *virtio*.
+* `cache` - Cache mode to use, e.g. `none`, `writeback`, `writethrough` (see the [libvirt documentation for possible values](http://libvirt.org/formatdomain.html#elementsDisks) or [here](https://www.suse.com/documentation/sles11/book_kvm/data/sect1_chapter_book_kvm.html) for a fuller explanation). Defaults to *default*.
 
 The following example creates two additional disks.
 
